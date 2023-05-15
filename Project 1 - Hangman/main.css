@@ -1,0 +1,88 @@
+body {
+  background-image: url("https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2b1eab7f0cab78cf/630f66496ee2d94d6e6a5456/Soccer_ball_football_general_view.jpg?auto=webp&format=pjpg&width=3840&quality=60");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  text-align: center;
+  font-size: 25px;
+  color: black;
+}
+
+h1 {
+  background-color: aliceblue;
+  opacity: 0.7;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0px 50px 0px 50px;
+  border-radius: 50px;
+  text-decoration: underline;
+}
+
+#bodyLabel {
+  background-color: aliceblue;
+  opacity: 0.7;
+  text-align: center;
+  display: inline-block;
+  margin-top: 50px;
+  padding: 0px 50px 0px 50px;
+  border-radius: 50px;
+}
+
+#premierLeagueButton {
+  background-image: url("https://supersport-cms-prod.azureedge.net/media/icxfej42/premier-league.png?width=500");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+
+#laLigaButton {
+  background-image: url("https://assets.laliga.com/assets/logos/laliga-v/laliga-v-1200x1200.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+
+#seriaAButton {
+  background-image: url("https://www.fifplay.com/img/public/serie-a-logo-transparent.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+
+#ligue1Button {
+  background-image: url("https://pbs.twimg.com/media/E_aANg3XoAEUhW2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 30px;
+  border-radius: 50px;
+}
