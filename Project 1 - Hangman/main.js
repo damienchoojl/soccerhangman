@@ -19,6 +19,7 @@ const ligue1Button = document.querySelector("#ligue1Button");
 
 // Label
 const bodyMessage = document.querySelector("h2");
+const gamePageLabel = document.querySelector("#gamePageLabel");
 
 /*----- event listeners -----*/
 premierLeagueButton.addEventListener("click", handlePremierLeagueButton);
@@ -32,6 +33,7 @@ function handlePremierLeagueButton() {
   gamePage.classList.remove("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
+  gamePageLabel.innerText = "The Category You Chose is Premier League";
 }
 
 function handleLaLigaButton() {
@@ -39,6 +41,7 @@ function handleLaLigaButton() {
   gamePage.classList.remove("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
+  gamePageLabel.innerText = "The Category You Chose is La Liga";
 }
 
 function handleSeriaAButton() {
@@ -46,6 +49,7 @@ function handleSeriaAButton() {
   gamePage.classList.remove("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
+  gamePageLabel.innerText = "The Category You Chose is Seria A";
 }
 
 function handleLigue1Button() {
@@ -53,6 +57,7 @@ function handleLigue1Button() {
   gamePage.classList.remove("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
+  gamePageLabel.innerText = "The Category You Chose is Ligue 1";
 }
 
 // // Timer
