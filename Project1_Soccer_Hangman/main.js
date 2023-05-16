@@ -5,6 +5,7 @@ mainPageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
 const gamePageTitle = document.querySelector("#gamePageTitle");
 
 /*----- state variables -----*/
+let categories = "";
 
 /*----- cached elements  -----*/
 // Pages
@@ -18,11 +19,13 @@ const serieAButton = document.querySelector("#serieAButton");
 const ligue1Button = document.querySelector("#ligue1Button");
 const clearButton = document.querySelector("#clearButton");
 const restartButton = document.querySelector("#restartButton");
+const hintButton = document.querySelector("#hintButton");
 
 // Label
 const bodyMessage = document.querySelector("h2");
 const gamePageLabel = document.querySelector("#gamePageLabel");
 const mainPageLabel = document.querySelector("#mainPageLabel");
+const hintLabel = document.querySelector("#hintLabel");
 
 // Input
 const answerInput = document.querySelector("#answerInput");
@@ -32,11 +35,12 @@ premierLeagueButton.addEventListener("click", handlePremierLeagueButton);
 laLigaButton.addEventListener("click", handleLaLigaButton);
 serieAButton.addEventListener("click", handleSerieAButton);
 ligue1Button.addEventListener("click", handleLigue1Button);
-clearButton.addEventListener("click", handleclearButton);
+clearButton.addEventListener("click", handleClearButton);
 restartButton.addEventListener("click", handleRestartButton);
+hintButton.addEventListener("click", handleHintButton);
 
 /*----- functions -----*/
-function handleclearButton() {
+function handleClearButton() {
   answerInput.value = "";
 }
 
@@ -46,13 +50,27 @@ function handleRestartButton() {
   mainPageLabel.classList.remove("hide");
 }
 
+function handleHintButton() {
+  hintLabel.classList.remove("hide");
+  if (categories === "Premier League") {
+    hintLabel.innerText = "Hi";
+  } else if (categories === "La Liga") {
+    hintLabel.innerText = "A";
+  } else if (categories === "Serie A") {
+    hintLabel.innerText = "B";
+  } else if (categories === "Ligue 1") {
+    hintLabel.innerText = "C";
+  }
+}
+
 function handlePremierLeagueButton() {
   mainPage.classList.add("hide");
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  gamePageLabel.innerText = "The Category You Chose is Premier League";
+  categories = "Premier League";
+  gamePageLabel.innerText = `The Category You Chose is ${categories}`;
 }
 
 function handleLaLigaButton() {
@@ -61,7 +79,8 @@ function handleLaLigaButton() {
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  gamePageLabel.innerText = "The Category You Chose is La Liga";
+  categories = "La Liga";
+  gamePageLabel.innerText = `The Category You Chose is ${categories}`;
 }
 
 function handleSerieAButton() {
@@ -70,7 +89,8 @@ function handleSerieAButton() {
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  gamePageLabel.innerText = "The Category You Chose is Serie A";
+  categories = "Serie A";
+  gamePageLabel.innerText = `The Category You Chose is ${categories}`;
 }
 
 function handleLigue1Button() {
@@ -79,7 +99,8 @@ function handleLigue1Button() {
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  gamePageLabel.innerText = "The Category You Chose is Ligue 1";
+  categories = "Ligue 1";
+  gamePageLabel.innerText = `The Category You Chose is ${categories}`;
 }
 
 // // Timer
