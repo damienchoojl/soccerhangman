@@ -29,6 +29,7 @@ h3 {
   margin-top: 50px;
   padding: 0px 50px 0px 50px;
   border-radius: 50px;
+  font-size: 25px;
 }
 
 #gamePageLabel {
@@ -39,6 +40,7 @@ h3 {
   margin-top: 0px;
   padding: 0px 50px 0px 50px;
   border-radius: 50px;
+  font-size: 35px;
 }
 
 #bodyLabel {
@@ -105,4 +107,24 @@ h3 {
   line-height: 1.2;
   margin-top: 30px;
   border-radius: 50px;
+}
+
+#hintButton,
+#guessButton,
+#resetButton,
+#restartButton {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  font-size: 13px;
+  margin: 3px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+#answerInput {
+  width: 300px;
+  padding: 12px;
+  margin: 3px;
+  box-sizing: border-box;
 }

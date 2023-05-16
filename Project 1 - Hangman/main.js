@@ -16,18 +16,27 @@ const premierLeagueButton = document.querySelector("#premierLeagueButton");
 const laLigaButton = document.querySelector("#laLigaButton");
 const seriaAButton = document.querySelector("#seriaAButton");
 const ligue1Button = document.querySelector("#ligue1Button");
+const resetButton = document.querySelector("#resetButton");
 
 // Label
 const bodyMessage = document.querySelector("h2");
 const gamePageLabel = document.querySelector("#gamePageLabel");
+
+// Input
+const answerInput = document.querySelector("#answerInput");
 
 /*----- event listeners -----*/
 premierLeagueButton.addEventListener("click", handlePremierLeagueButton);
 laLigaButton.addEventListener("click", handleLaLigaButton);
 seriaAButton.addEventListener("click", handleSeriaAButton);
 ligue1Button.addEventListener("click", handleLigue1Button);
+resetButton.addEventListener("click", handleResetButton);
 
 /*----- functions -----*/
+function handleResetButton() {
+  answerInput.value = "";
+}
+
 function handlePremierLeagueButton() {
   mainPage.classList.add("hide");
   gamePage.classList.remove("hide");
