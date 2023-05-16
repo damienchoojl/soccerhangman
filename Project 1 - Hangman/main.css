@@ -43,7 +43,7 @@ h3 {
   font-size: 35px;
 }
 
-#bodyLabel {
+#mainPageLabel {
   background-color: aliceblue;
   opacity: 0.7;
   text-align: center;
@@ -111,7 +111,7 @@ h3 {
 
 #hintButton,
 #guessButton,
-#resetButton,
+#clearButton,
 #restartButton {
   width: 70px;
   height: 70px;
