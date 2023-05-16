@@ -54,3 +54,9 @@ function handleLigue1Button() {
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
 }
+
+// // Timer
+// `setInterval(() => {
+//   console.log("Beep");
+// }, 3000);
+// `;
