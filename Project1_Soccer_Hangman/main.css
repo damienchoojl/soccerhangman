@@ -6,8 +6,9 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
     Helvetica, Arial, "Lucida Grande", sans-serif;
   text-align: center;
-  font-size: 25px;
+  font-size: 15px;
   color: black;
+  margin-top: 10px;
 }
 
 h1 {
@@ -15,7 +16,7 @@ h1 {
   opacity: 0.7;
   text-align: center;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 0px 50px 0px 50px;
   border-radius: 50px;
   text-decoration: underline;
@@ -23,16 +24,17 @@ h1 {
 }
 
 h3,
-#questionLabel {
+#questionLabel,
+#hintLabel {
   background-color: aliceblue;
   opacity: 0.7;
   text-align: center;
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 0px;
   padding: 0px 50px 0px 50px;
   border-radius: 50px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 h4 {
@@ -40,10 +42,10 @@ h4 {
   opacity: 0.7;
   text-align: center;
   display: inline-block;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 0px 50px 0px 50px;
   border-radius: 50px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #gamePageLabel {
@@ -51,11 +53,11 @@ h4 {
   opacity: 0.7;
   text-align: center;
   display: inline-block;
-  margin-top: 0px;
   padding: 0px 50px 0px 50px;
   border-radius: 10px;
-  font-size: 35px;
+  font-size: 20px;
   border-style: solid;
+  margin-top: -10px;
 }
 
 #mainPageLabel {
@@ -63,10 +65,9 @@ h4 {
   opacity: 0.7;
   text-align: center;
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 30px;
   padding: 0px 50px 0px 50px;
   border-radius: 50px;
-  /* border-style: dotted; */
 }
 
 #premierLeagueButton {
@@ -80,6 +81,7 @@ h4 {
   font-size: 20px;
   line-height: 1.2;
   margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 50px;
 }
 
@@ -94,6 +96,7 @@ h4 {
   font-size: 20px;
   line-height: 1.2;
   margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 50px;
 }
 
@@ -108,6 +111,7 @@ h4 {
   font-size: 20px;
   line-height: 1.2;
   margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 50px;
 }
 
@@ -122,6 +126,7 @@ h4 {
   font-size: 20px;
   line-height: 1.2;
   margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 50px;
 }
 
@@ -143,4 +148,11 @@ h4 {
   padding: 12px;
   margin: 3px;
   box-sizing: border-box;
+}
+
+#stickman {
+  color: white;
+  border: white dashed 2px;
+  padding: 15px;
+  margin-top: 20px;
 }

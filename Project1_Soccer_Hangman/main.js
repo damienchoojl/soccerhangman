@@ -96,6 +96,7 @@ randomshuffledSAArray =
 randomshuffledL1Array =
   shuffledL1Array[Math.floor(Math.random() * shuffledL1Array.length)];
 
+// Button functions
 function handleClearButton() {
   answerInput.value = "";
 }
