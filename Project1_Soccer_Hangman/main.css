@@ -86,10 +86,10 @@ h4 {
 }
 
 #laLigaButton {
-  background-image: url("https://assets.laliga.com/assets/logos/laliga-v/laliga-v-1200x1200.jpg");
+  background-image: url("https://assets.laliga.com/assets/logos/laliga-v/laliga-v-1200x1200.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   width: 300px;
   height: 300px;
   padding: 20px;
@@ -116,7 +116,7 @@ h4 {
 }
 
 #ligue1Button {
-  background-image: url("https://pbs.twimg.com/media/E_aANg3XoAEUhW2.jpg");
+  background-image: url("https://seeklogo.com/images/L/ligue-1-logo-CB821B1015-seeklogo.com.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -155,4 +155,19 @@ h4 {
   border: white dashed 2px;
   padding: 15px;
   margin-top: 20px;
+  border: 1px solid black;
+  width: 400px;
+}
+
+button {
+  background: base-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    /* @include transition; */
+    background: lightgrey;
+    border: solid 1px white;
+    color: base-color;
+  }
 }

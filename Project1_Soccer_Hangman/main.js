@@ -29,7 +29,7 @@ const hintButton = document.querySelector("#hintButton");
 const bodyMessage = document.querySelector("h2");
 const gamePageLabel = document.querySelector("#gamePageLabel");
 const mainPageLabel = document.querySelector("#mainPageLabel");
-const hintLabel = document.querySelector("#hintLabel");
+const hintLabel = document.querySelector("h4");
 const questionLabel = document.querySelector("#questionLabel");
 
 // Input
@@ -45,6 +45,8 @@ restartButton.addEventListener("click", handleRestartButton);
 hintButton.addEventListener("click", handleHintButton);
 
 /*----- functions -----*/
+// Convert Questions to _
+
 // Shuffle PL Question
 function shufflePLArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -61,7 +63,6 @@ function shuffleLLArray(array) {
   }
   return array;
 }
-
 // Shuffle Serie A Question
 function shuffleSAArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -70,7 +71,6 @@ function shuffleSAArray(array) {
   }
   return array;
 }
-
 // Shuffle Ligue 1 Question
 function shuffleL1Array(array) {
   for (let i = array.length - 1; i > 0; i--) {
