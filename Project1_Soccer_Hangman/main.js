@@ -6,7 +6,8 @@ const gamePageTitle = document.querySelector("#gamePageTitle");
 
 /*----- state variables -----*/
 let categories = "";
-const premierLeagueQuestion = ["A", "B", "C"];
+let lives;
+const premierLeagueQuestion = ["TEST", "HELLO", "HI"];
 const laLigaQuestion = ["D", "E", "F"];
 const serieAQuestion = ["G", "H", "I"];
 const ligue1Question = ["J", "K", "L"];
@@ -24,6 +25,7 @@ const ligue1Button = document.querySelector("#ligue1Button");
 const clearButton = document.querySelector("#clearButton");
 const restartButton = document.querySelector("#restartButton");
 const hintButton = document.querySelector("#hintButton");
+const guessButton = document.querySelector("#guessButton");
 
 // Label
 const bodyMessage = document.querySelector("h2");
@@ -31,6 +33,7 @@ const gamePageLabel = document.querySelector("#gamePageLabel");
 const mainPageLabel = document.querySelector("#mainPageLabel");
 const hintLabel = document.querySelector("h4");
 const questionLabel = document.querySelector("#questionLabel");
+const showLives = document.querySelector("#myLives");
 
 // Input
 const answerInput = document.querySelector("#answerInput");
@@ -43,58 +46,28 @@ ligue1Button.addEventListener("click", handleLigue1Button);
 clearButton.addEventListener("click", handleClearButton);
 restartButton.addEventListener("click", handleRestartButton);
 hintButton.addEventListener("click", handleHintButton);
+guessButton.addEventListener("click", handleGuessButton);
 
 /*----- functions -----*/
 // Convert Questions to _
-
-// Shuffle PL Question
-function shufflePLArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-// Shuffle LaLiga Question
-function shuffleLLArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-// Shuffle Serie A Question
-function shuffleSAArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-// Shuffle Ligue 1 Question
-function shuffleL1Array(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
+function getRandomWord(words) {
+  const randomIndex = Math.floor(Math.random() * words.length);
+  const word = words[randomIndex];
+  console.log(word);
+  const underscoreWord = word
+    .split("")
+    .map((questionLabel) => (questionLabel === " " ? " " : "_"))
+    .join(",");
+  return underscoreWord;
 }
 
-// Calling ShuffledArrays function
-shuffledPLArray = shufflePLArray(premierLeagueQuestion);
-shuffledLLArray = shuffleLLArray(laLigaQuestion);
-shuffledSAArray = shuffleLLArray(serieAQuestion);
-shuffledL1Array = shuffleL1Array(ligue1Question);
-
-// Assigning new random shuffled array
-randomshuffledPLArray =
-  shuffledPLArray[Math.floor(Math.random() * shuffledPLArray.length)];
-randomshuffledLLArray =
-  shuffledLLArray[Math.floor(Math.random() * shuffledLLArray.length)];
-randomshuffledSAArray =
-  shuffledSAArray[Math.floor(Math.random() * shuffledSAArray.length)];
-randomshuffledL1Array =
-  shuffledL1Array[Math.floor(Math.random() * shuffledL1Array.length)];
+function startHangman() {
+  convertedWordsPL = getRandomWord(premierLeagueQuestion);
+  convertedWordsLL = getRandomWord(laLigaQuestion);
+  convertedWordsSA = getRandomWord(serieAQuestion);
+  convertedWordsL1 = getRandomWord(ligue1Question);
+}
+startHangman();
 
 // Button functions
 function handleClearButton() {
@@ -110,35 +83,35 @@ function handleRestartButton() {
 function handleHintButton() {
   hintLabel.classList.remove("hide");
   if (categories === "Premier League") {
-    if (randomshuffledPLArray === "A") {
+    if (convertedWordsPL === "_,_") {
       hintLabel.innerText = "Hi";
-    } else if (randomshuffledPLArray === "B") {
+    } else if (convertedWordsPL === "_,_,_,_") {
       hintLabel.innerText = "Hello";
-    } else if (randomshuffledPLArray === "C") {
+    } else if (convertedWordsPL === "_,_,_,_,_") {
       hintLabel.innerText = "Yo";
     }
   } else if (categories === "La Liga") {
-    if (randomshuffledLLArray === "D") {
+    if (convertedWordsLL === "D") {
       hintLabel.innerText = "Lilo";
-    } else if (randomshuffledLLArray === "E") {
+    } else if (convertedWordsLL === "E") {
       hintLabel.innerText = "Damien";
-    } else if (randomshuffledLLArray === "F") {
+    } else if (convertedWordsLL === "F") {
       hintLabel.innerText = "hehe";
     }
   } else if (categories === "Serie A") {
-    if (randomshuffledSAArray === "G") {
+    if (convertedWordsSA === "G") {
       hintLabel.innerText = "Test";
-    } else if (randomshuffledSAArray === "H") {
+    } else if (convertedWordsSA === "H") {
       hintLabel.innerText = "Happy";
-    } else if (randomshuffledSAArray === "I") {
+    } else if (convertedWordsSA === "I") {
       hintLabel.innerText = "Sad";
     }
   } else if (categories === "Ligue 1") {
-    if (randomshuffledL1Array === "J") {
+    if (convertedWordsL1 === "J") {
       hintLabel.innerText = "Angry";
-    } else if (randomshuffledL1Array === "K") {
+    } else if (convertedWordsL1 === "K") {
       hintLabel.innerText = "Whale";
-    } else if (randomshuffledL1Array === "L") {
+    } else if (convertedWordsL1 === "L") {
       hintLabel.innerText = "Cat";
     }
   }
@@ -152,7 +125,7 @@ function handlePremierLeagueButton() {
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   categories = "Premier League";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
-  questionLabel.innerText = randomshuffledPLArray;
+  questionLabel.innerText = convertedWordsPL;
 }
 
 function handleLaLigaButton() {
@@ -163,7 +136,7 @@ function handleLaLigaButton() {
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   categories = "La Liga";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
-  questionLabel.innerText = randomshuffledLLArray;
+  questionLabel.innerText = convertedWordsLL;
 }
 
 function handleSerieAButton() {
@@ -174,7 +147,7 @@ function handleSerieAButton() {
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   categories = "Serie A";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
-  questionLabel.innerText = randomshuffledSAArray;
+  questionLabel.innerText = convertedWordsSA;
 }
 
 function handleLigue1Button() {
@@ -185,7 +158,66 @@ function handleLigue1Button() {
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   categories = "Ligue 1";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
-  questionLabel.innerText = randomshuffledL1Array;
+  questionLabel.innerText = convertedWordsL1;
+}
+
+function handleGuessButton() {
+  const guess = answerInput.value.toUpperCase();
+
+  if (guess.length !== 1) {
+    alert("Please enter a single letter as your guess!");
+    return;
+  }
+
+  let convertedWord;
+
+  if (categories === "Premier League") {
+    convertedWord = convertedWordsPL.split(",");
+    premierLeagueQuestion.forEach((word, index) => {
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === guess) {
+          convertedWord[i] = guess;
+        }
+      }
+    });
+    convertedWordsPL = convertedWord.join(",");
+    questionLabel.innerText = convertedWordsPL;
+  } else if (categories === "La Liga") {
+    convertedWord = convertedWordsLL.split(",");
+    laLigaQuestion.forEach((word, index) => {
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === guess) {
+          convertedWord[i] = guess;
+        }
+      }
+    });
+    convertedWordsLL = convertedWord.join(",");
+    questionLabel.innerText = convertedWordsLL;
+  } else if (categories === "Serie A") {
+    convertedWord = convertedWordsSA.split(",");
+    serieAQuestion.forEach((word, index) => {
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === guess) {
+          convertedWord[i] = guess;
+        }
+      }
+    });
+    convertedWordsSA = convertedWord.join(",");
+    questionLabel.innerText = convertedWordsSA;
+  } else if (categories === "Ligue 1") {
+    convertedWord = convertedWordsL1.split(",");
+    ligue1Question.forEach((word, index) => {
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] === guess) {
+          convertedWord[i] = guess;
+        }
+      }
+    });
+    convertedWordsL1 = convertedWord.join(",");
+    questionLabel.innerText = convertedWordsL1;
+  }
+
+  answerInput.value = ""; // Clear the input field after guessing
 }
 
 // // Timer
@@ -193,3 +225,12 @@ function handleLigue1Button() {
 //   console.log("Beep");
 // }, 3000);
 // `;
+
+// // Hangman
+// canvas = function () {
+//   myStickman = document.getElementById("stickman");
+//   context = myStickman.getContext("2d");
+//   context.beginPath();
+//   context.strokeStyle = "#fff";
+//   context.lineWidth = 2;
+// };

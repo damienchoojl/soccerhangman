@@ -171,3 +171,9 @@ button {
     color: base-color;
   }
 }
+
+#mylives {
+  font-size: 1.6em;
+  text-align: center;
+  display: block;
+}
