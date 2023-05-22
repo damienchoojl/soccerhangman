@@ -25,7 +25,8 @@ h1 {
 
 h3,
 #questionLabel,
-#hintLabel {
+#hintLabel,
+#rightWrongMessage {
   background-color: aliceblue;
   opacity: 0.7;
   text-align: center;

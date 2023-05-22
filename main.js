@@ -6,7 +6,7 @@ const gamePageTitle = document.querySelector("#gamePageTitle");
 
 /*----- state variables -----*/
 let categories = "";
-let lives;
+let lives = 10;
 const premierLeagueQuestion = ["TEST", "HELLO", "HI"];
 const laLigaQuestion = ["D", "E", "F"];
 const serieAQuestion = ["G", "H", "I"];
@@ -34,6 +34,7 @@ const mainPageLabel = document.querySelector("#mainPageLabel");
 const hintLabel = document.querySelector("h4");
 const questionLabel = document.querySelector("#questionLabel");
 const showLives = document.querySelector("#myLives");
+const rightWrongMessage = document.querySelector("#rightWrongMessage");
 
 // Input
 const answerInput = document.querySelector("#answerInput");
@@ -57,7 +58,7 @@ function getRandomWord(words) {
   const underscoreWord = word
     .split("")
     .map((questionLabel) => (questionLabel === " " ? " " : "_"))
-    .join(",");
+    .join(" ");
   return underscoreWord;
 }
 
@@ -170,67 +171,163 @@ function handleGuessButton() {
   }
 
   let convertedWord;
+  let isCorrect = false;
 
   if (categories === "Premier League") {
-    convertedWord = convertedWordsPL.split(",");
+    convertedWord = convertedWordsPL.split(" ");
     premierLeagueQuestion.forEach((word, index) => {
       for (let i = 0; i < word.length; i++) {
         if (word[i] === guess) {
           convertedWord[i] = guess;
+          isCorrect = true; // Mark as correct if a letter matches
         }
       }
     });
-    convertedWordsPL = convertedWord.join(",");
+    convertedWordsPL = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsPL;
   } else if (categories === "La Liga") {
-    convertedWord = convertedWordsLL.split(",");
+    convertedWord = convertedWordsLL.split(" ");
     laLigaQuestion.forEach((word, index) => {
       for (let i = 0; i < word.length; i++) {
         if (word[i] === guess) {
           convertedWord[i] = guess;
+          isCorrect = true; // Mark as correct if a letter matches
         }
       }
     });
-    convertedWordsLL = convertedWord.join(",");
+    convertedWordsLL = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsLL;
   } else if (categories === "Serie A") {
-    convertedWord = convertedWordsSA.split(",");
+    convertedWord = convertedWordsSA.split(" ");
     serieAQuestion.forEach((word, index) => {
       for (let i = 0; i < word.length; i++) {
         if (word[i] === guess) {
           convertedWord[i] = guess;
+          isCorrect = true; // Mark as correct if a letter matches
         }
       }
     });
-    convertedWordsSA = convertedWord.join(",");
+    convertedWordsSA = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsSA;
   } else if (categories === "Ligue 1") {
-    convertedWord = convertedWordsL1.split(",");
+    convertedWord = convertedWordsL1.split(" ");
     ligue1Question.forEach((word, index) => {
       for (let i = 0; i < word.length; i++) {
         if (word[i] === guess) {
           convertedWord[i] = guess;
+          isCorrect = true; // Mark as correct if a letter matches
         }
       }
     });
-    convertedWordsL1 = convertedWord.join(",");
+    convertedWordsL1 = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsL1;
+  }
+
+  if (isCorrect) {
+    if (
+      convertedWordsPL.replace(/\s/g, "") ===
+        premierLeagueQuestion.join("").toUpperCase() ||
+      convertedWordsLL.replace(/\s/g, "") ===
+        laLigaQuestion.join("").toUpperCase() ||
+      convertedWordsSA.replace(/\s/g, "") ===
+        serieAQuestion.join("").toUpperCase() ||
+      convertedWordsL1.replace(/\s/g, "") ===
+        ligue1Question.join("").toUpperCase()
+    ) {
+      rightWrongMessage.innerText = "Well done!"; // Display "Well done" if the entire answer is correct
+    } else {
+      rightWrongMessage.innerText = "Correct!"; // Display "Correct" if a letter matches
+    }
+  } else {
+    rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
   }
 
   answerInput.value = ""; // Clear the input field after guessing
 }
 
+// // Hangman
+// // Function to draw the stickman
+// function drawStickman() {
+//   context.beginPath();
+//   context.arc(60, 25, 10, 0, Math.PI * 2, false); // Head
+//   context.moveTo(60, 35);
+//   context.lineTo(60, 50); // Body
+//   context.lineTo(40, 70); // Left leg
+//   context.moveTo(60, 50);
+//   context.lineTo(80, 70); // Right leg
+//   context.moveTo(60, 50);
+//   context.lineTo(40, 45); // Left arm
+//   context.moveTo(60, 50);
+//   context.lineTo(80, 45); // Right arm
+//   context.stroke();
+// }
+
+// // Function to update the stickman
+// canvas = function updateStickman() {
+//   const parts = ["head", "body", "leftLeg", "rightLeg", "leftArm", "rightArm"];
+//   const missedParts = parts.slice(-lives);
+
+//   missedParts.forEach((part) => {
+//     switch (part) {
+//       case "head":
+//         // Draw head
+//         context.beginPath();
+//         context.arc(60, 25, 10, 0, Math.PI * 2, false);
+//         context.stroke();
+//         break;
+//       case "body":
+//         // Draw body
+//         context.moveTo(60, 35);
+//         context.lineTo(60, 50);
+//         context.stroke();
+//         break;
+//       case "leftLeg":
+//         // Draw left leg
+//         context.moveTo(60, 50);
+//         context.lineTo(40, 70);
+//         context.stroke();
+//         break;
+//       case "rightLeg":
+//         // Draw right leg
+//         context.moveTo(60, 50);
+//         context.lineTo(80, 70);
+//         context.stroke();
+//         break;
+//       case "leftArm":
+//         // Draw left arm
+//         context.moveTo(60, 50);
+//         context.lineTo(40, 45);
+//         context.stroke();
+//         break;
+//       case "rightArm":
+//         // Draw right arm
+//         context.moveTo(60, 50);
+//         context.lineTo(80, 45);
+//         context.stroke();
+//         break;
+//       default:
+//         break;
+//     }
+//   });
+// };
+
+// // Function to handle wrong guess
+// function handleWrongGuess() {
+//   updateStickman();
+//   lives--;
+
+//   if (lives === 0) {
+//     // Game over logic
+//     bodyMessage.classList.remove("hide");
+//     bodyMessage.innerText = "Game Over! You've run out of lives.";
+//     guessButton.disabled = true; // Disable the guess button
+//   } else {
+//     // Update UI with remaining lives
+//     showLives.innerText = `Lives: ${lives}`;
+//   }
+// }
 // // Timer
 // `setInterval(() => {
 //   console.log("Beep");
 // }, 3000);
 // `;
-
-// // Hangman
-// canvas = function () {
-//   myStickman = document.getElementById("stickman");
-//   context = myStickman.getContext("2d");
-//   context.beginPath();
-//   context.strokeStyle = "#fff";
-//   context.lineWidth = 2;
-// };
