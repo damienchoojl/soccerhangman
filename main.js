@@ -84,11 +84,11 @@ function handleRestartButton() {
 function handleHintButton() {
   hintLabel.classList.remove("hide");
   if (categories === "Premier League") {
-    if (convertedWordsPL === "_,_") {
+    if (convertedWordsPL === "_ _") {
       hintLabel.innerText = "Hi";
-    } else if (convertedWordsPL === "_,_,_,_") {
+    } else if (convertedWordsPL === "_ _ _ _") {
       hintLabel.innerText = "Hello";
-    } else if (convertedWordsPL === "_,_,_,_,_") {
+    } else if (convertedWordsPL === "_ _ _ _ _") {
       hintLabel.innerText = "Yo";
     }
   } else if (categories === "La Liga") {
