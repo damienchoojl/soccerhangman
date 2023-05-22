@@ -143,10 +143,16 @@ function handlePremierLeagueButton() {
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
+  restartButton.classList.add("hide");
+  guessButton.classList.remove("hide");
+  clearButton.classList.remove("hide");
+  hintButton.classList.remove("hide");
+  rightWrongMessage.innerText = "";
+  hintLabel.classList.add("hide");
+  answerInput.disabled = false;
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsPL;
-  console.log(convertedWordsPL);
 }
 
 function handleLaLigaButton() {
@@ -156,6 +162,13 @@ function handleLaLigaButton() {
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
+  restartButton.classList.add("hide");
+  guessButton.classList.remove("hide");
+  clearButton.classList.remove("hide");
+  hintButton.classList.remove("hide");
+  rightWrongMessage.innerText = "";
+  hintLabel.classList.add("hide");
+  answerInput.disabled = false;
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsLL;
@@ -168,6 +181,13 @@ function handleSerieAButton() {
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
+  restartButton.classList.add("hide");
+  guessButton.classList.remove("hide");
+  clearButton.classList.remove("hide");
+  hintButton.classList.remove("hide");
+  rightWrongMessage.innerText = "";
+  hintLabel.classList.add("hide");
+  answerInput.disabled = false;
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsSA;
@@ -180,6 +200,13 @@ function handleLigue1Button() {
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
+  restartButton.classList.add("hide");
+  guessButton.classList.remove("hide");
+  clearButton.classList.remove("hide");
+  hintButton.classList.remove("hide");
+  rightWrongMessage.innerText = "";
+  hintLabel.classList.add("hide");
+  answerInput.disabled = false;
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsL1;
@@ -187,85 +214,116 @@ function handleLigue1Button() {
 
 function handleGuessButton() {
   const guess = answerInput.value.toUpperCase();
-
   if (guess.length !== 1) {
     alert("Please enter a single letter as your guess!");
     return;
   }
-
   let convertedWord;
-  let isCorrect = false;
-
   if (categories === "Premier League") {
     convertedWord = convertedWordsPL.split(" ");
-    premierLeagueQuestion.forEach((word, index) => {
-      for (let i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-          convertedWord[i] = guess;
-          isCorrect = true; // Mark as correct if a letter matches
-        }
+    let allGuessed = true; // Flag to track if all letters are guessed correctly
+    for (let i = 0; i < word.length; i++) {
+      if (word.charAt(i) === guess) {
+        convertedWord[i] = guess;
       }
-    });
+      if (convertedWord[i] !== word.charAt(i)) {
+        allGuessed = false; // Set flag to false if any letter is not guessed correctly
+      }
+    }
     convertedWordsPL = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsPL;
+    if (allGuessed) {
+      rightWrongMessage.innerText = "Well done! You guessed it!"; // Display "Well done, you guessed it!" if all letters are guessed correctly
+      restartButton.classList.remove("hide");
+      guessButton.classList.add("hide");
+      hintButton.classList.add("hide");
+      clearButton.classList.add("hide");
+      answerInput.disabled = true;
+    } else if (convertedWord.includes(guess)) {
+      rightWrongMessage.innerText = "Correct!"; // Display "Correct" if at least one letter matches
+    } else {
+      rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
+    }
+    answerInput.value = ""; // Clear the input field after guessing
   } else if (categories === "La Liga") {
     convertedWord = convertedWordsLL.split(" ");
-    laLigaQuestion.forEach((word, index) => {
-      for (let i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-          convertedWord[i] = guess;
-          isCorrect = true; // Mark as correct if a letter matches
-        }
+    let allGuessed = true; // Flag to track if all letters are guessed correctly
+    for (let i = 0; i < word.length; i++) {
+      if (word.charAt(i) === guess) {
+        convertedWord[i] = guess;
       }
-    });
+      if (convertedWord[i] !== word.charAt(i)) {
+        allGuessed = false; // Set flag to false if any letter is not guessed correctly
+      }
+    }
     convertedWordsLL = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsLL;
+    if (allGuessed) {
+      rightWrongMessage.innerText = "Well done! You guessed it!"; // Display "Well done, you guessed it!" if all letters are guessed correctly
+      restartButton.classList.remove("hide");
+      guessButton.classList.add("hide");
+      hintButton.classList.add("hide");
+      clearButton.classList.add("hide");
+      answerInput.disabled = true;
+    } else if (convertedWord.includes(guess)) {
+      rightWrongMessage.innerText = "Correct!"; // Display "Correct" if at least one letter matches
+    } else {
+      rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
+    }
+    answerInput.value = ""; // Clear the input field after guessing
   } else if (categories === "Serie A") {
     convertedWord = convertedWordsSA.split(" ");
-    serieAQuestion.forEach((word, index) => {
-      for (let i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-          convertedWord[i] = guess;
-          isCorrect = true; // Mark as correct if a letter matches
-        }
+    let allGuessed = true; // Flag to track if all letters are guessed correctly
+    for (let i = 0; i < word.length; i++) {
+      if (word.charAt(i) === guess) {
+        convertedWord[i] = guess;
       }
-    });
+      if (convertedWord[i] !== word.charAt(i)) {
+        allGuessed = false; // Set flag to false if any letter is not guessed correctly
+      }
+    }
     convertedWordsSA = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsSA;
+    if (allGuessed) {
+      rightWrongMessage.innerText = "Well done! You guessed it!"; // Display "Well done, you guessed it!" if all letters are guessed correctly
+      restartButton.classList.remove("hide");
+      guessButton.classList.add("hide");
+      hintButton.classList.add("hide");
+      clearButton.classList.add("hide");
+      answerInput.disabled = true;
+    } else if (convertedWord.includes(guess)) {
+      rightWrongMessage.innerText = "Correct!"; // Display "Correct" if at least one letter matches
+    } else {
+      rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
+    }
+    answerInput.value = ""; // Clear the input field after guessing
   } else if (categories === "Ligue 1") {
     convertedWord = convertedWordsL1.split(" ");
-    ligue1Question.forEach((word, index) => {
-      for (let i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-          convertedWord[i] = guess;
-          isCorrect = true; // Mark as correct if a letter matches
-        }
+    let allGuessed = true; // Flag to track if all letters are guessed correctly
+    for (let i = 0; i < word.length; i++) {
+      if (word.charAt(i) === guess) {
+        convertedWord[i] = guess;
       }
-    });
+      if (convertedWord[i] !== word.charAt(i)) {
+        allGuessed = false; // Set flag to false if any letter is not guessed correctly
+      }
+    }
     convertedWordsL1 = convertedWord.join(" ");
     questionLabel.innerText = convertedWordsL1;
-  }
-
-  if (isCorrect) {
-    if (
-      convertedWordsPL.replace(/\s/g, "") ===
-        premierLeagueQuestion.join("").toUpperCase() ||
-      convertedWordsLL.replace(/\s/g, "") ===
-        laLigaQuestion.join("").toUpperCase() ||
-      convertedWordsSA.replace(/\s/g, "") ===
-        serieAQuestion.join("").toUpperCase() ||
-      convertedWordsL1.replace(/\s/g, "") ===
-        ligue1Question.join("").toUpperCase()
-    ) {
-      rightWrongMessage.innerText = "Well done!"; // Display "Well done" if the entire answer is correct
+    if (allGuessed) {
+      rightWrongMessage.innerText = "Well done! You guessed it!"; // Display "Well done, you guessed it!" if all letters are guessed correctly
+      restartButton.classList.remove("hide");
+      guessButton.classList.add("hide");
+      hintButton.classList.add("hide");
+      clearButton.classList.add("hide");
+      answerInput.disabled = true;
+    } else if (convertedWord.includes(guess)) {
+      rightWrongMessage.innerText = "Correct!"; // Display "Correct" if at least one letter matches
     } else {
-      rightWrongMessage.innerText = "Correct!"; // Display "Correct" if a letter matches
+      rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
     }
-  } else {
-    rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
+    answerInput.value = ""; // Clear the input field after guessing
   }
-
-  answerInput.value = ""; // Clear the input field after guessing
 }
 
 // // Hangman
