@@ -5,8 +5,13 @@ mainPageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
 const gamePageTitle = document.querySelector("#gamePageTitle");
 
 /*----- state variables -----*/
-let categories = "";
+let categories = ["Premier League", "La Liga", "Serie A", "Ligue 1"];
 let lives = 10;
+let word = "";
+let convertedWordsPL;
+let convertedWordsLL;
+let convertedWordsSA;
+let convertedWordsL1;
 const premierLeagueQuestion = ["TEST", "HELLO", "HI"];
 const laLigaQuestion = ["D", "E", "F"];
 const serieAQuestion = ["G", "H", "I"];
@@ -53,8 +58,7 @@ guessButton.addEventListener("click", handleGuessButton);
 // Convert Questions to _
 function getRandomWord(words) {
   const randomIndex = Math.floor(Math.random() * words.length);
-  const word = words[randomIndex];
-  console.log(word);
+  word = words[randomIndex]; //
   const underscoreWord = word
     .split("")
     .map((questionLabel) => (questionLabel === " " ? " " : "_"))
@@ -63,12 +67,26 @@ function getRandomWord(words) {
 }
 
 function startHangman() {
-  convertedWordsPL = getRandomWord(premierLeagueQuestion);
-  convertedWordsLL = getRandomWord(laLigaQuestion);
-  convertedWordsSA = getRandomWord(serieAQuestion);
-  convertedWordsL1 = getRandomWord(ligue1Question);
+  if (categories === "Premier League") {
+    convertedWordsPL = getRandomWord(premierLeagueQuestion);
+    console.log(convertedWordsPL);
+  } else if (categories === "La Liga") {
+    convertedWordsLL = getRandomWord(laLigaQuestion);
+  } else if (categories === "Serie A") {
+    convertedWordsSA = getRandomWord(serieAQuestion);
+  } else if (categories === "Ligue 1") {
+    convertedWordsL1 = getRandomWord(ligue1Question);
+  }
+
+  convertedWordsPL =
+    convertedWordsPL || premierLeagueQuestion.map(() => "_").join(" ");
+  convertedWordsLL =
+    convertedWordsLL || laLigaQuestion.map(() => "_").join(" ");
+  convertedWordsSA =
+    convertedWordsSA || serieAQuestion.map(() => "_").join(" ");
+  convertedWordsL1 =
+    convertedWordsL1 || ligue1Question.map(() => "_").join(" ");
 }
-startHangman();
 
 // Button functions
 function handleClearButton() {
@@ -84,80 +102,85 @@ function handleRestartButton() {
 function handleHintButton() {
   hintLabel.classList.remove("hide");
   if (categories === "Premier League") {
-    if (convertedWordsPL === "_ _") {
+    if (word === "HI") {
       hintLabel.innerText = "Hi";
-    } else if (convertedWordsPL === "_ _ _ _") {
+    } else if (word === "TEST") {
       hintLabel.innerText = "Hello";
-    } else if (convertedWordsPL === "_ _ _ _ _") {
+    } else if (word === "HELLO") {
       hintLabel.innerText = "Yo";
     }
   } else if (categories === "La Liga") {
-    if (convertedWordsLL === "D") {
+    if (word === "D") {
       hintLabel.innerText = "Lilo";
-    } else if (convertedWordsLL === "E") {
+    } else if (word === "E") {
       hintLabel.innerText = "Damien";
-    } else if (convertedWordsLL === "F") {
+    } else if (word === "F") {
       hintLabel.innerText = "hehe";
     }
   } else if (categories === "Serie A") {
-    if (convertedWordsSA === "G") {
+    if (word === "G") {
       hintLabel.innerText = "Test";
-    } else if (convertedWordsSA === "H") {
+    } else if (word === "H") {
       hintLabel.innerText = "Happy";
-    } else if (convertedWordsSA === "I") {
+    } else if (word === "I") {
       hintLabel.innerText = "Sad";
     }
   } else if (categories === "Ligue 1") {
-    if (convertedWordsL1 === "J") {
+    if (word === "J") {
       hintLabel.innerText = "Angry";
-    } else if (convertedWordsL1 === "K") {
+    } else if (word === "K") {
       hintLabel.innerText = "Whale";
-    } else if (convertedWordsL1 === "L") {
+    } else if (word === "L") {
       hintLabel.innerText = "Cat";
     }
   }
 }
 
 function handlePremierLeagueButton() {
+  categories = "Premier League";
+  startHangman();
   mainPage.classList.add("hide");
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  categories = "Premier League";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsPL;
+  console.log(convertedWordsPL);
 }
 
 function handleLaLigaButton() {
+  categories = "La Liga";
+  startHangman();
   mainPage.classList.add("hide");
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  categories = "La Liga";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsLL;
 }
 
 function handleSerieAButton() {
+  categories = "Serie A";
+  startHangman();
   mainPage.classList.add("hide");
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  categories = "Serie A";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsSA;
 }
 
 function handleLigue1Button() {
+  categories = "Ligue 1";
+  startHangman();
   mainPage.classList.add("hide");
   gamePage.classList.remove("hide");
   mainPageLabel.classList.add("hide");
   bodyMessage.classList.add("hide");
   gamePageTitle.innerText = `Welcome to Soccer Hangman, ${mainPageName}!`;
-  categories = "Ligue 1";
   gamePageLabel.innerText = `The Category You Chose is ${categories}`;
   questionLabel.innerText = convertedWordsL1;
 }
