@@ -152,11 +152,10 @@ h4 {
 }
 
 #stickman {
-  color: white;
-  border: white dashed 2px;
   padding: 15px;
   margin-top: 20px;
-  border: 1px solid black;
+  border: 5px solid black;
+  border-radius: 30px;
   width: 400px;
 }
 
@@ -166,17 +165,10 @@ button {
   cursor: pointer;
 
   &:hover {
-    /* @include transition; */
     background: lightgrey;
     border: solid 1px white;
     color: base-color;
   }
-}
-
-#mylives {
-  font-size: 1.6em;
-  text-align: center;
-  display: block;
 }
 
 #blinktext {
