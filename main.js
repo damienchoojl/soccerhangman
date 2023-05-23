@@ -272,6 +272,11 @@ function checkWords() {
   let allGuessed = true; // Flag to track if all letters are guessed correctly
   for (let i = 0; i < word.length; i++) {
     if (word.charAt(i) === guess) {
+      if (convertedWord[i] === guess) {
+        // To check if user key in the same correct letter
+        rightWrongMessage.innerText = "You Have Already Guessed This Letter!";
+        return;
+      }
       convertedWord[i] = guess;
     } else if (convertedWord[i] !== word.charAt(i)) {
       allGuessed = false; // Set flag to false if any letter is not guessed correctly
