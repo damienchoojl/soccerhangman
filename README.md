@@ -1,4 +1,4 @@
-☐ <Soccer Hangman>:
+☐ Soccer Hangman:
 
 Welcome to the Soccer Hangman game! Immerse yourself in the thrilling world of soccer while testing your word-guessing skills. As an avid fan of the beautiful game, you'll find yourself captivated by this exciting and challenging twist on the classic hangman game.
 
