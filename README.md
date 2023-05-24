@@ -1,4 +1,4 @@
-<img src="https://1000logos.net/wp-content/uploads/2021/02/Liverpool-logo.jpg" width="400"> <img src="https://pbs.twimg.com/media/EbYs6_IWoAEVGP0.jpg" width="400">
+<img src="https://1000logos.net/wp-content/uploads/2021/02/Liverpool-logo.jpg" width="400">
 
 # Soccer Hangman:
 
