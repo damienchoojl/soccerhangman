@@ -39,7 +39,7 @@ const serieAQuestion = [
   "ROMA",
   "FIORENTINA",
 ];
-const ligue1Question = ["PSG", "MARSEILLE", "MONACO", "LYON", "LOSC", "RENNES"];
+const ligue1Question = ["PSG", "MARSEILLE", "MONACO", "LYON"];
 
 /*----- cached elements  -----*/
 // Pages
