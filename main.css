@@ -158,6 +158,8 @@ h4 {
   border: 5px solid black;
   border-radius: 30px;
   width: 400px;
+  background-color: aliceblue;
+  opacity: 80%;
 }
 
 button {

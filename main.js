@@ -7,7 +7,7 @@ const gamePageTitle = document.querySelector("#gamePageTitle");
 /*----- state variables -----*/
 let categories = ["Premier League", "La Liga", "Serie A", "Ligue 1"];
 let word = "";
-let count = 0;
+let numOfWrong = 0;
 let guess;
 let allGuessed;
 let convertedWord;
@@ -90,7 +90,7 @@ function handleRestartButton() {
   gamePage.classList.add("hide");
   mainPage.classList.remove("hide");
   mainPageLabel.classList.remove("hide");
-  count = 0;
+  numOfWrong = 0;
 }
 
 function handleHintButton() {
@@ -158,35 +158,35 @@ function handleHintButton() {
 function handlePremierLeagueButton() {
   categories = "Premier League";
   startHangman();
-  let { initialDrawing } = stickmanCreator();
-  initialDrawing();
+  let { hookFrame } = stickmanCreator();
+  hookFrame();
 }
 
 function handleLaLigaButton() {
   categories = "La Liga";
   startHangman();
-  let { initialDrawing } = stickmanCreator();
-  initialDrawing();
+  let { hookFrame } = stickmanCreator();
+  hookFrame();
 }
 
 function handleSerieAButton() {
   categories = "Serie A";
   startHangman();
-  let { initialDrawing } = stickmanCreator();
-  initialDrawing();
+  let { hookFrame } = stickmanCreator();
+  hookFrame();
 }
 
 function handleLigue1Button() {
   categories = "Ligue 1";
   startHangman();
-  let { initialDrawing } = stickmanCreator();
-  initialDrawing();
+  let { hookFrame } = stickmanCreator();
+  hookFrame();
 }
 
 function handleGuessButton() {
   guess = answerInput.value.toUpperCase();
   if (guess.length !== 1) {
-    alert("Please enter a single letter as your guess!");
+    rightWrongMessage.innerText = "Please Enter A Single Letter As Your Guess!";
     return;
   }
 
@@ -275,6 +275,7 @@ function checkWords() {
       if (convertedWord[i] === guess) {
         // To check if user key in the same correct letter
         rightWrongMessage.innerText = "You Have Already Guessed This Letter!";
+        answerInput.value = "";
         return;
       }
       convertedWord[i] = guess;
@@ -283,7 +284,7 @@ function checkWords() {
     }
   }
   if (allGuessed) {
-    rightWrongMessage.innerText = "Well done! You guessed it!"; // Display "Well done, you guessed it!" if all letters are guessed correctly
+    rightWrongMessage.innerText = "Well Done! You Guessed It!"; // Display "Well done, you guessed it!" if all letters are guessed correctly
     restartButton.classList.remove("hide");
     guessButton.classList.add("hide");
     hintButton.classList.add("hide");
@@ -293,9 +294,9 @@ function checkWords() {
     rightWrongMessage.innerText = "Correct!"; // Display "Correct" if at least one letter matches
   } else {
     rightWrongMessage.innerText = "Wrong!"; // Display "Wrong" if no letter matches
-    count += 1;
-    drawMan(count);
-    if (count == 6) {
+    numOfWrong += 1;
+    drawStickMan(numOfWrong);
+    if (numOfWrong == 6) {
       rightWrongMessage.innerText = "Game Over Loser!";
       restartButton.classList.remove("hide");
       guessButton.classList.add("hide");
@@ -310,71 +311,72 @@ function checkWords() {
 //Canvas - Stickman Animation
 function stickmanCreator() {
   let context = canvas.getContext("2d");
-  context.beginPath();
   context.strokeStyle = "black";
   context.lineWidth = 2;
 
-  //For drawing lines
-  function drawLine(fromX, fromY, toX, toY) {
-    context.moveTo(fromX, fromY);
-    context.lineTo(toX, toY);
+  //For drawing StickMan
+  function drawStickManParts(startX, startY, endX, endY) {
+    context.beginPath();
+    context.moveTo(startX, startY);
+    context.lineTo(endX, endY);
     context.stroke();
   }
 
   function head() {
     context.beginPath();
-    context.arc(70, 30, 10, 0, Math.PI * 2, true);
+    context.arc(150, 30, 10, 100, Math.PI, true);
     context.stroke();
   }
 
   function body() {
-    drawLine(70, 40, 70, 80);
+    drawStickManParts(150, 40, 150, 80);
   }
 
-  function leftArm() {
-    drawLine(70, 50, 50, 70);
+  function leftHand() {
+    drawStickManParts(150, 50, 120, 70);
   }
 
-  function rightArm() {
-    drawLine(70, 50, 90, 70);
+  function rightHand() {
+    drawStickManParts(150, 50, 180, 70);
   }
 
   function leftLeg() {
-    drawLine(70, 80, 50, 110);
+    drawStickManParts(150, 80, 130, 110);
   }
 
   function rightLeg() {
-    drawLine(70, 80, 90, 110);
+    drawStickManParts(150, 80, 170, 110);
   }
 
   //initial frame
-  function initialDrawing() {
+  function hookFrame() {
     //clear canvas
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     //bottom line
-    drawLine(10, 130, 130, 130);
+    drawStickManParts(75, 130, 230, 130);
     //left line
-    drawLine(10, 10, 10, 131);
+    drawStickManParts(100, 10, 100, 131);
     //top line
-    drawLine(10, 10, 70, 10);
+    drawStickManParts(100, 10, 150, 10);
     //small top line
-    drawLine(70, 10, 70, 20);
+    drawStickManParts(150, 10, 150, 20);
   }
 
   return {
-    initialDrawing,
+    hookFrame,
     head,
     body,
-    leftArm,
-    rightArm,
+    leftHand,
+    rightHand,
     leftLeg,
     rightLeg,
   };
 }
 
-function drawMan(count) {
-  let { head, body, leftArm, rightArm, leftLeg, rightLeg } = stickmanCreator();
-  switch (count) {
+function drawStickMan(numOfWrong) {
+  let { head, body, leftHand, rightHand, leftLeg, rightLeg } =
+    stickmanCreator();
+  switch (numOfWrong) {
     case 1:
       head();
       break;
@@ -382,10 +384,10 @@ function drawMan(count) {
       body();
       break;
     case 3:
-      leftArm();
+      leftHand();
       break;
     case 4:
-      rightArm();
+      rightHand();
       break;
     case 5:
       leftLeg();
