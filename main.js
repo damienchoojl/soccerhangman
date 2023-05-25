@@ -308,18 +308,19 @@ function checkWords() {
   answerInput.value = ""; // Clear the input field after guessing
 }
 
-//Canvas - Stickman Animation
+// Canvas - Stickman Animation
+// https://stackoverflow.com/questions/49119264/javascript-canvas-animation-stick-figure-movement
 function stickmanCreator() {
   let stickman = canvas.getstickman("2d");
   stickman.strokeStyle = "black";
   stickman.lineWidth = 2;
 
-  //For drawing StickMan
+  // For drawing StickMan
   function drawStickManParts(startX, startY, endX, endY) {
-    stickman.beginPath();
-    stickman.moveTo(startX, startY);
-    stickman.lineTo(endX, endY);
-    stickman.stroke();
+    stickman.beginPath(); // begin a new path in canvas
+    stickman.moveTo(startX, startY); // move from startX position to startY position
+    stickman.lineTo(endX, endY); // draw straight line from current position to specific position
+    stickman.stroke(); // outline
   }
 
   function head() {
@@ -348,17 +349,17 @@ function stickmanCreator() {
     drawStickManParts(150, 80, 170, 110);
   }
 
-  //initial frame
+  // initial frame
   function hookFrame() {
-    //clear canvas
+    // clear canvas
     stickman.clearRect(0, 0, canvas.width, canvas.height);
-    //bottom line
+    // bottom line
     drawStickManParts(75, 130, 230, 130);
-    //left line
+    // left line
     drawStickManParts(100, 10, 100, 131);
-    //top line
+    // top line
     drawStickManParts(100, 10, 150, 10);
-    //small top line
+    // small top line
     drawStickManParts(150, 10, 150, 20);
   }
 
@@ -373,6 +374,8 @@ function stickmanCreator() {
   };
 }
 
+// Stickman parts appearing
+// https://stackoverflow.com/questions/13207927/switch-statement-for-multiple-cases-in-javascript
 function drawStickMan(numOfWrong) {
   let { head, body, leftHand, rightHand, leftLeg, rightLeg } =
     stickmanCreator();
