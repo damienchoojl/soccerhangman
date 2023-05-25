@@ -310,22 +310,22 @@ function checkWords() {
 
 //Canvas - Stickman Animation
 function stickmanCreator() {
-  let context = canvas.getContext("2d");
-  context.strokeStyle = "black";
-  context.lineWidth = 2;
+  let stickman = canvas.getstickman("2d");
+  stickman.strokeStyle = "black";
+  stickman.lineWidth = 2;
 
   //For drawing StickMan
   function drawStickManParts(startX, startY, endX, endY) {
-    context.beginPath();
-    context.moveTo(startX, startY);
-    context.lineTo(endX, endY);
-    context.stroke();
+    stickman.beginPath();
+    stickman.moveTo(startX, startY);
+    stickman.lineTo(endX, endY);
+    stickman.stroke();
   }
 
   function head() {
-    context.beginPath();
-    context.arc(150, 30, 10, 100, Math.PI, true);
-    context.stroke();
+    stickman.beginPath();
+    stickman.arc(150, 30, 10, 100, Math.PI, true);
+    stickman.stroke();
   }
 
   function body() {
@@ -351,7 +351,7 @@ function stickmanCreator() {
   //initial frame
   function hookFrame() {
     //clear canvas
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    stickman.clearRect(0, 0, canvas.width, canvas.height);
     //bottom line
     drawStickManParts(75, 130, 230, 130);
     //left line
