@@ -317,7 +317,7 @@ function stickmanCreator() {
 
   // For drawing StickMan
   function drawStickManParts(startX, startY, endX, endY) {
-    stickman.beginPath(); // begin a new path in canvas
+    stickman.beginPath(); // begin a new path/reset in canvas
     stickman.moveTo(startX, startY); // move from startX position to startY position
     stickman.lineTo(endX, endY); // draw straight line from current position to specific position
     stickman.stroke(); // outline
