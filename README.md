@@ -34,6 +34,10 @@ Are you ready to take on the challenge and become the ultimate word-guessing cha
 
 CSS, HTML, JavaScript
 
+# Ideation Sketch:
+
+![photo_2023-05-25 16 49 45](https://github.com/damienchoojl/soccerhangman/assets/128020380/09fe9733-0a2e-49f7-889f-988f951c6d31)
+
 # Getting Started:
 
 Experience the excitement of Soccer Hangman! Visit the thrilling world of [Soccer Hangman](https://soccerhangman.vercel.app/) and dive straight into the game. Test your knowledge, guess the letters, and unravel the hidden words while immersing yourself in the captivating soccer-themed gameplay. Don't wait any longer—start playing now and see if you can become the ultimate Soccer Hangman champion!
