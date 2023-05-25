@@ -311,7 +311,7 @@ function checkWords() {
 // Canvas - Stickman Animation
 // https://stackoverflow.com/questions/49119264/javascript-canvas-animation-stick-figure-movement
 function stickmanCreator() {
-  let stickman = canvas.getstickman("2d");
+  let stickman = canvas.getContext("2d");
   stickman.strokeStyle = "black";
   stickman.lineWidth = 2;
 
