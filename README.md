@@ -54,18 +54,18 @@ I drew inspiration from various sources while creating the hangman animation, ad
 
 [Switch statement for hangman animation to appear](https://stackoverflow.com/questions/13207927/switch-statement-for-multiple-cases-in-javascript)
 
-[Hangman game from Cathy Dutton] (https://codepen.io/cathydutton/pen/JjpxMm)
+[Hangman game from Cathy Dutton](https://codepen.io/cathydutton/pen/JjpxMm)
 
 # Image
 
 Images are taken from Google. All rights belong to the original artists and owners.
 
-[Main Page Background] (https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2b1eab7f0cab78cf/630f66496ee2d94d6e6a5456/Soccer_ball_football_general_view.jpg?auto=webp&format=pjpg&width=3840&quality=60)
+[Main Page Background](https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt2b1eab7f0cab78cf/630f66496ee2d94d6e6a5456/Soccer_ball_football_general_view.jpg?auto=webp&format=pjpg&width=3840&quality=60)
 
-[Premier League Logo] (https://supersport-cms-prod.azureedge.net/media/icxfej42/premier-league.png?width=500)
+[Premier League Logo](https://supersport-cms-prod.azureedge.net/media/icxfej42/premier-league.png?width=500)
 
-[La Liga Logo] (https://assets.laliga.com/assets/logos/laliga-v/laliga-v-1200x1200.png)
+[La Liga Logo](https://assets.laliga.com/assets/logos/laliga-v/laliga-v-1200x1200.png)
 
-[Ligue 1 Logo] (https://seeklogo.com/images/L/ligue-1-logo-CB821B1015-seeklogo.com.png)
+[Ligue 1 Logo](https://seeklogo.com/images/L/ligue-1-logo-CB821B1015-seeklogo.com.png)
 
-[Serie A Logo] (https://www.fifplay.com/img/public/serie-a-logo-transparent.png)
+[Serie A Logo](https://www.fifplay.com/img/public/serie-a-logo-transparent.png)
